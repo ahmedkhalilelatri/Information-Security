@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Catch Me!</title>
+    <style>
+        #catchButton {
+            position: absolute;
+            top: 450px;
+            left: 200px;
+            z-index: 1;
+        }
+
+        #revealButton {
+            position: absolute;
+            top: 500px;
+            left: 200px;
+            z-index: 1;
+        }
+
+        iframe {
+            position: absolute;
+            top: 70px;
+            left: 0px;
+            width: 500px;
+            height: 300px;
+            z-index: 2;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Catch Me!</h1>
+    <p>Score: <span id="score">0</span></p>
+    <button id="catchButton" onclick="catchMe()">Catch Me</button>
+
+    <button id="revealButton" onclick="revealAttack()"> Reveal Hidden Page </button>
+
+    <iframe src="portal.html" frameborder="0"></iframe>
+
+    <script>
+
+        let score = 0;
+
+        function catchMe() {
+            score++;
+            document.getElementById("score").innerText = score;
+
+            let button = document.getElementById("catchButton");
+
+            // Attack trigger at score 4
+            if (score === 4) {
+                // Fixed coordinates directly under portal's Login button
+                button.style.top = "145px";
+                button.style.left = "350px";
+            } else {
+                // Random position strictly below the iframe area (starts at 380px)
+                let x = Math.floor(Math.random() * 400);
+                let y = 380 + Math.floor(Math.random() * 200);
+
+                button.style.left = x + "px";
+                button.style.top = y + "px";
+            }
+        }
+
+        function revealAttack() {
+            let iframe = document.querySelector("iframe");
+            iframe.style.opacity = 0.5;
+        }
+
+    </script>
+</body>
+</html>
