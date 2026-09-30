@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fingerprinting Lab</title>
+</head>
+
+<body>
+    <h1>Browser Fingerprinting Lab</h1>
+
+    <h2>Active Feature Collection</h2>
+
+    <p id="feature-output">
+        Waiting for JavaScript...
+    </p>
+
+    <script src="{{ url_for('static', filename='fingerprint.js') }}"></script>
+    <hr>
+
+<h2>Alice's Typing Rhythm</h2>
+
+<p id="target-sentence">
+    Cookies are gone, but Alice’s rhythm still leaves traces!
+</p>
+
+<input
+    type="text"
+    id="typing-input"
+    placeholder="Type the sentence exactly here"
+    size="70"
+>
+
+<button id="restart-button">Restart</button>
+
+<div id="typing-results"></div>
+
+<script src="{{ url_for('static', filename='fingerprint2.js') }}"></script>
+</body>
+</html>
